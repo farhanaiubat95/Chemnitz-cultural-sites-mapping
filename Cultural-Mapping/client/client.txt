@@ -1,0 +1,15 @@
+1. npm create vite@latest client -- --template react   
+2. cd client
+3. npm install
+   run -> npm run dev   
+
+4. npm install leaflet react-leaflet
+5. npm install axios
+
+6. npm install tailwindcss @tailwindcss/vite
+7. vite.config.ts -> 'Add the @tailwindcss/vite'
+8. index.css -> @import "tailwindcss";
+    run -> npm run dev
+    
+9. Load Leaflet CSS -> 'index.html'
+10. npm install proj4
