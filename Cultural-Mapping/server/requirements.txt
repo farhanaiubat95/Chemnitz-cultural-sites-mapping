@@ -1,0 +1,90 @@
+asgiref==3.8.1
+Django==5.2.3
+djangorestframework==3.16.0
+psycopg2-binary==2.9.10
+sqlparse==0.5.3
+tzdata==2025.2
+djangorestframework-gis==1.0.0
+
+
+
+---Command----
+1. mkdir Cultural-Mapping
+2. cd Cultural-Mapping
+3. django-admin startproject chemnitz_project server
+4. cd server
+
+----Create-a-virtual-environment----
+5. python -m venv env
+6. env\Scripts\activate   # On Windows
+
+---Install-Django&-PostgreSQL-support--
+7. pip freeze > requirements.txt
+
+----PostgreSQL-Setup----
+8. Database name: cultural_mapping
+9. Username: postgres (or any name you choose)
+10. Password: e.g., 1234
+
+--create-the-app-properly--
+11. cd D:\Python\Cultural-Mapping\server
+12. python manage.py startapp core
+
+---Add-'core'-back-to-INSTALLED_APPS--
+-------> settings.py
+13. INSTALLED_APPS = [
+    ...
+    'core',   # Your app
+    'rest_framework', # REST API
+    ]
+
+14. python manage.py runserver
+
+---Create-a-superuser---
+15. python manage.py createsuperuser
+    --> Follow the prompts to create a superuser account for the Django admin interface.
+       Username (leave blank to use 'admin'): admin
+       Email address: admin@gmail.com
+       Password: cc00**55 --> when typing the password, it will not show any characters, just type carefully & press enter-->
+       Password (again): cc00**55
+
+16. python manage.py runserver
+
+17. Model 
+
+    Serializer 
+
+    ViewSet 
+
+    URLs 
+
+    CSV Import 
+
+    Tested API endpoint 
+
+# import rest_framework_gis
+18. pip install djangorestframework-gis
+19. pip install pyproj
+20. python manage.py import_districts
+    python manage.py import_cultural_sites
+    python manage.py import_bus_parking
+    python manage.py import_motorhome_parking
+    python manage.py import_saxon_sites
+
+# CORS Headers
+# This is needed to allow the React frontend to communicate with the Django backend.
+21. pip install django-cors-headers
+22. Add 'corsheaders' to INSTALLED_APPS in settings.py:
+    INSTALLED_APPS = [
+        ...
+        'corsheaders',
+    ]
+23. Add 'corsheaders.middleware.CorsMiddleware' to MIDDLEWARE in settings.py:
+    MIDDLEWARE = [
+        ...
+        'corsheaders.middleware.CorsMiddleware',
+        
+        ...
+    ]
+24. Add CORS settings in settings.py:
+    CORS_ALLOW_ALL_ORIGINS = True  # For development only, use with caution
